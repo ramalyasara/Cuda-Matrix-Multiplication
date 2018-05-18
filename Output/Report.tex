@@ -1,0 +1,122 @@
+\documentclass[12pt,oneside,a4paper]{article}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+\font\titlefont=cmr12 at 40pt
+
+\title{\titlefont{Matrix Multiplication RunTime Graphs}}
+
+\author{M.L.R.Yasara (CST140048)}
+\begin{document}
+
+	\maketitle
+
+	\newpage
+
+	\tableofcontents
+
+	\newpage
+
+	\section{CPU Program runtime}
+
+	\par
+	This program executed in normal CPU and $x,y$ values are giving the average runtime of each different matrix sizes.
+	\hfill \break
+
+	\begin{tikzpicture}
+		\begin{axis}[xlabel=Matrix size,ylabel=Runtime(secs.),legend style={at={(1.1,1)},anchor=west}]
+			\addplot[color=red,mark=x] table[ignore chars={(,)},col sep=comma] {cpu.dat};
+			\addlegendentry{$CPU$}
+		\end{axis}
+	\end{tikzpicture}
+
+	\newpage
+
+	\section{GPU Global Memory Program(CUDA) runtime}
+
+	\par
+	This program executed in Global memory used and $x,y$ values are giving the average runtime of each different matrix sizes.
+	\hfill \break
+
+	\begin{tikzpicture}
+		\begin{axis}[xlabel=Matrix size,ylabel=Runtime(secs.),legend style={at={(0.5,-0.1)},anchor=north}]
+			\addplot[color=green,mark=x] table[ignore chars={(,)},col sep=comma] {global.dat};
+			\addlegendentry{$GPU (Global)$}
+		\end{axis}
+	\end{tikzpicture}
+
+	\newpage
+
+	\section{GPU Shared Memory Program(CUDA) runtime}
+
+	\par
+	This program executed in Shared memory used and $x,y$ values are giving the average runtime of each different matrix sizes.
+	\hfill \break
+
+	\begin{tikzpicture}
+		\begin{axis}[xlabel=Matrix size,ylabel=Runtime(secs.),legend style={at={(0.5,-0.1)},anchor=north}]
+			\addplot[color=blue,mark=x] table[ignore chars={(,)},col sep=comma] {shared.dat};
+			\addlegendentry{$GPU (Shared)$}
+		\end{axis}
+	\end{tikzpicture}
+
+	\newpage
+
+
+		\section{GPU Global Memory Program with different threads (CUDA) runtime}
+
+	\par
+	This program executed in global memory used and $x,y$ values are giving the average runtime of each different thread sizes.
+	\hfill \break
+
+	\begin{tikzpicture}
+		\begin{axis}[xlabel=Thread size,ylabel=Runtime(secs.),legend style={at={(0.5,-0.1)},anchor=north}]
+			\addplot[color=black,mark=x] table[ignore chars={(,)},col sep=comma] {globalthread.dat};
+			\addlegendentry{$GPU (Global-Threads)$}
+		\end{axis}
+	\end{tikzpicture}
+
+	\newpage
+
+
+
+
+
+
+
+
+
+
+	\section{Comparison and Conclusion}
+
+	\par
+	In conclusion The previous plots are compared withing same graph. According the graphs it is proven that GPU Shared memory with highest value of threads Program is giving more efficiency than other program types.  
+	\hfill \break
+
+	\begin{tikzpicture}
+		\begin{axis}[xlabel=Matrix size,ylabel=Runtime(secs.),legend style={at={(0.5,-0.1)},anchor=north}]
+			\addplot[color=red,mark=x] table[ignore chars={(,)},col sep=comma] {cpu.dat};
+			\addlegendentry{$CPU$}
+			\addplot[color=green,mark=x] table[ignore chars={(,)},col sep=comma] {global.dat};
+			\addlegendentry{$GPU (Global)$}
+			\addplot[color=blue,mark=x] table[ignore chars={(,)},col sep=comma] {shared.dat};
+			\addlegendentry{$GPU (Shared)$}
+			\addplot[color=black,mark=x] table[ignore chars={(,)},col sep=comma] {globalthread.dat};
+			\addlegendentry{$GPU (with different threads)$}
+		\end{axis}
+	\end{tikzpicture}
+
+	\newpage
+
+	\section{References}
+
+	\begin{itemize}
+	  \item https://www.tug.org/twg/mactex/tutorials/ltxprimer-1.0.pdf.
+	  \item https://gist.github.com/LeCoupa/122b12050f5fb267e75f
+	  \item https://tex.stackexchange.com/questions
+	\end{itemize}
+
+\end{document}
+
+
+\grid
